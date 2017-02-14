@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.udacity.stockhawk.data.Contract;
@@ -79,11 +78,9 @@ public final class QuoteSyncJob {
                 String name = stock.getName();
                 if (name == null) {
                     PrefUtils.removeStock(context, symbol);
-                    Log.v("position: ", "before toast");
+
                     Toast.makeText(context, "Stock symbol: " + symbol + " not found.", Toast.LENGTH_SHORT).show();
-                    Log.v("position: ", "after toast");
-                    context.stopService(new Intent(context, QuoteJobService.class));
-                    return;
+                    continue;
                 }
 
                 float price = quote.getPrice().floatValue();
@@ -182,6 +179,4 @@ public final class QuoteSyncJob {
 
         }
     }
-
-
 }
