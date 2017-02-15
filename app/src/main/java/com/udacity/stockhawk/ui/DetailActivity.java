@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -33,6 +34,10 @@ import butterknife.ButterKnife;
 public class DetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     @BindView(R.id.history)
     LineChart historyChart;
+    @BindView(R.id.stock_name)
+    TextView stockName;
+    @BindView(R.id.stock_price)
+    TextView stockPrice;
 
     String symbol;
 
@@ -79,6 +84,8 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         cursor.moveToFirst();
         String historyString = cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_HISTORY));
+        stockName.setText(cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_NAME)));
+        stockPrice.setText(cursor.getString(cursor.getColumnIndex(Contract.Quote.COLUMN_PRICE)));
         List<String> items = Arrays.asList(historyString.split("\\s*\\n\\s*"));
         List<String> xValues = new ArrayList<String>();
         List<Entry> yValues = new ArrayList<>();
