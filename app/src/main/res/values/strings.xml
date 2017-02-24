@@ -37,5 +37,6 @@
     <string name="fab_description">Click this button to add new stock</string>
     <string name="name_heading">Stock Name:</string>
     <string name="price_heading">Price:</string>
+    <string name="empty_list">No stocks available</string>
 
 </resources>
