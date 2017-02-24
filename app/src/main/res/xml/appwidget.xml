@@ -4,4 +4,4 @@
     android:minHeight="240dp"
     android:minWidth="294dp"
     android:resizeMode="horizontal|vertical"
-    android:updatePeriodMillis="100" />
+    android:updatePeriodMillis="1000" />

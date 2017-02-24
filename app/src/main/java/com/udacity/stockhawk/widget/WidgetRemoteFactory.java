@@ -52,8 +52,11 @@ public class WidgetRemoteFactory implements RemoteViewsService.RemoteViewsFactor
 
     @Override
     public void onDestroy() {
-        mCursor.close();
-        mCursor = null;
+        if (mCursor != null) {
+            mCursor.close();
+            mCursor = null;
+        }
+
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.udacity.stockhawk.R;
@@ -15,6 +16,7 @@ import com.udacity.stockhawk.R;
 public class WidgetProvider extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        Log.v("position", "onUpdateCalled");
         for (int appWidgetId : appWidgetIds) {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
             Intent adapter = new Intent(context, WidgetService.class);
@@ -23,5 +25,6 @@ public class WidgetProvider extends AppWidgetProvider {
 
             appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
         }
+        super.onUpdate(context, appWidgetManager, appWidgetIds);
     }
 }
