@@ -20,7 +20,7 @@ public class QuoteIntentService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         QuoteSyncJob.getQuotes(getApplicationContext());
         Intent widgetIntent = new Intent(this, WidgetProvider.class);
-        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        widgetIntent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
         int widgetId = R.xml.appwidget;
         int[] ids = {widgetId};
         widgetIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
