@@ -1,13 +1,10 @@
 package com.udacity.stockhawk.data;
 
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.udacity.stockhawk.R;
-import com.udacity.stockhawk.widget.WidgetProvider;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -52,12 +49,10 @@ public final class PrefUtils {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
+        editor.remove(key);
+        editor.apply();
         editor.putStringSet(key, stocks);
         editor.apply();
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-        ComponentName thisWidget = new ComponentName(context, WidgetProvider.class);
-        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
-        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.list_view);
     }
 
     public static void addStock(Context context, String symbol) {
