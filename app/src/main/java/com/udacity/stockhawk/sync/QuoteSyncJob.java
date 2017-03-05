@@ -80,6 +80,12 @@ public final class QuoteSyncJob {
                 Stock stock = quotes.get(symbol);
                 if (stock == null) {
                     PrefUtils.removeStock(context, symbol);
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(context, context.getString(R.string.wrong_symbol, symbol), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 } else {
                     StockQuote quote = stock.getQuote();
                     String name = stock.getName();

@@ -39,5 +39,6 @@
     <string name="price_heading">Price:</string>
     <string name="empty_list">No stocks available</string>
     <string name="invalid_symbol">Stock symbol %s not found</string>
+    <string name="wrong_symbol">Invalid symbol %s</string>
 
 </resources>
