@@ -63,6 +63,8 @@ public final class QuoteSyncJob {
             Timber.d(stockCopy.toString());
 
             if (stockArray.length == 0) {
+                Intent dataUpdatedIntent = new Intent(ACTION_DATA_UPDATED);
+                context.sendBroadcast(dataUpdatedIntent);
                 return;
             }
 
